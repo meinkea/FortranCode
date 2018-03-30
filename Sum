@@ -1,0 +1,10 @@
+program sum
+    Double Precision :: x,y,z
+    Print *, "This program sums two numbers"
+    Print *, "Please give the first number to sum"
+    Read *, x
+    Print *, "Please give the second number to sum"
+    Read *, y
+    Z = X + Y
+    PRINT *,"sum of x + y = ", Z
+end program sum
