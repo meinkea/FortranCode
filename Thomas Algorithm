@@ -1,0 +1,252 @@
+!   Program for soliving Tri-diagonal Matrices using Thomas Algorithm
+!
+program Thomas
+    implicit none
+!
+!   -----------   DECLARING VARIABLES   ----------
+!
+!   Arrays:
+        real, dimension ( 1 : 12 ) :: U_aem, D_aem, L_aem, b_aem, x_aem
+!
+!   Integers:
+        integer :: N_aem
+        integer :: i, k
+!
+!    ~ Key for Variables:
+!
+!       U_aem  =  the Super-Diagonal
+!       D_aem  =  the Super-Diagonal
+!       L_aem  =  the Super-Diagonal
+!       b_aem  =  the Answer Vector
+!
+!       x_aem  =  the Solution Vector
+!           ^ this is what this program will solve for
+!
+!       N_aem  =  the number of entries in arrays
+!
+!       i  =  coutner
+!       k  =  coutner
+!
+!
+!
+!   ***Look into code that can read from a file***
+!   
+!
+!   ----------   ASSIGNING VALUES FOR VARIABLES   ----------
+!
+!
+!   The following are entries for the Tri-Diagonal matrix
+!
+!   Diagonal (center diagonal)
+    D_aem(1) = -8.936
+    D_aem(2) = -8.136
+    D_aem(3) = -7.336
+    D_aem(4) = -6.536
+    D_aem(5) = -5.736
+    D_aem(6) = -4.936
+    D_aem(7) = -4.136
+    D_aem(8) = -3.336
+    D_aem(9) = -2.536
+    D_aem(10) = -1.736
+    D_aem(11) = -0.936
+    D_aem(12) = -0.268
+!
+!   Super-Diagonal (upper diagonal)
+    U_aem(1) = 4.2
+    U_aem(2) = 3.8
+    U_aem(3) = 3.4
+    U_aem(4) = 3
+    U_aem(5) = 2.6
+    U_aem(6) = 2.2
+    U_aem(7) = 1.8
+    U_aem(8) = 1.4
+    U_aem(9) = 1
+    U_aem(10) = 0.6
+    U_aem(11) = 0.2
+    U_aem(12) = 0
+!
+!   Sub-Diagonal (lower diagonal)
+    L_aem(1) = 0
+    L_aem(2) = 4.2
+    L_aem(3) = 3.8
+    L_aem(4) = 3.4
+    L_aem(5) = 3
+    L_aem(6) = 2.6
+    L_aem(7) = 2.2
+    L_aem(8) = 1.8
+    L_aem(9) = 1.4
+    L_aem(10) = 1
+    L_aem(11) = 0.6
+    L_aem(12) = 0.2
+!
+!   b vector (The Answer Vector)
+    b_aem(1) = -1153
+    b_aem(2) = -3.4
+    b_aem(3) = -3.4
+    b_aem(4) = -3.4
+    b_aem(5) = -3.4
+    b_aem(6) = -3.4
+    b_aem(7) = -3.4
+    b_aem(8) = -3.4
+    b_aem(9) = -3.4
+    b_aem(10) = -3.4
+    b_aem(11) = -3.4
+    b_aem(12) = -1.7
+!
+!
+!   ~~~ Checking the contents of all Arrays ~~~
+!   ~~~~~~~~~~~~~~ End of Check ~~~~~~~~~~~~~~
+        print *, ('Check the contents of the Arrays:')
+        print *, (' ')
+!
+        print *, ('D_aem')
+        print *, D_aem
+        print *, (' ')
+!
+        print *, ('U_aem')
+        print *, U_aem
+        print *, (' ')
+!
+        print *, ('L_aem')
+        print *, L_aem
+        print *, (' ')
+!
+        print *, ('b_aem')
+        print *, b_aem
+        print *, (' ')
+!   ~~~~~~~~~~~~~~ End of Check ~~~~~~~~~~~~~~
+!
+!
+!   Spacing
+        print *, (' ')
+!
+!
+!   Determining size of Arrays, I am assuming all arrays are the same
+        N_aem = size( D_aem )
+!
+!   Checking the N_aem
+        print *, ('Size of Array D_aem')
+        print *, N_aem
+!
+!
+!   ----------   cleaning and formating of output   ----------
+!
+!
+!   Space
+        print *, (' ')
+        print *, (' ')
+!
+!   Space
+        print *, ('_____________________________________________________________')
+        print *, (' ')
+        print *, (' ')
+!
+!
+!   ----------   THOMAS ALGORITHM CODE   ----------
+!
+!
+        print *, ('>>> Request for Military Level Access (11)        ')
+        print *, ('>>> ENTER PASSCODE:        ')
+        print *, ('        $********************')
+        print *, (' ')
+            print *, ('>>> Authenticating...')
+        print *, ('>>> Military Level Access (11)...  GRANTED        ')
+!
+        print *, ('>>> Initiating...        ')
+!
+!
+    print *, (' ')
+        print *, ('        *** STARTING OPERATION - THOMAS ALGORITHM ***        ')
+        print *, (' ')
+!
+!
+!   1.) Factor of A into LU
+!
+    U_aem(1) = U_aem(1) / D_aem(1)
+!
+!   checking U_aem(1)
+    print *, ('checking U_aem(1)')
+    print *, U_aem(1)
+    print *, (' ')
+!
+!
+!
+    DO  i = 2, N_aem
+!
+        D_aem(i) = D_aem(i) - L_aem(i) * U_aem(i-1)
+!        
+        IF( N_aem /= i ) THEN
+            U_aem(i) = U_aem(i) / D_aem(i)
+!
+        ELSE
+            continue
+!
+        END IF
+!
+    END DO    
+!
+!
+!   ~~~ Checking the contents of all Arrays ~~~
+        print *, ('1.) Factor of A into LU')
+        print *, ('Check the contents of the Arrays:')
+        print *, (' ')
+!
+        print *, ('D_aem')
+        print *, D_aem
+        print *, (' ')
+!
+        print *, ('U_aem')
+        print *, U_aem
+        print *, (' ')
+!
+        print *, ('L_aem')
+        print *, L_aem
+        print *, (' ')
+!
+        print *, ('b_aem')
+        print *, b_aem
+        print *, (' ')
+        print *, (' ')
+!   ~~~~~~~~~~~~~~ End of Check ~~~~~~~~~~~~~~
+!
+!
+!   2.) Solution by forward and backsubstitution for a given RHS vector {b}
+!
+    b_aem(1) = b_aem(1) / D_aem(1)
+!
+    DO  i = 2, N_aem
+!
+        b_aem(i) = ( b_aem(i) - L_aem(i) * b_aem(i-1) ) / D_aem(i)
+!
+    END DO
+!
+!
+    DO  i = 2, N_aem
+!
+        k = N_aem - i + 1
+!
+        b_aem(k) = b_aem(k) - U_aem(k) * b_aem(k+1)
+!
+    END DO
+!
+!
+!   ~~~ Checking the contents of Array: b_aem ~~~
+        print *, ('2.) Solution by forward and backsubstitution for a given RHS vector {b}')
+        print *, ('Check the contents of the Array b_aem:')
+        print *, (' ')
+!
+        print *, ('b_aem')
+        print *, b_aem
+        print *, (' ')
+!
+!   ~~~~~~~~~~~~~~~~ End of Check ~~~~~~~~~~~~~~~~
+!
+    print *, ('>>> OPERATION COMPLETE')
+!
+    print *, (' ')
+!
+    print *, ('        *** End of program ***')
+!
+    STOP
+!
+end program thomas  
