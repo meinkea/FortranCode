@@ -1,0 +1,80 @@
+!  This program is to calculate a derivative
+!
+program derivative
+Implicit none
+!
+    Double Precision :: x_aem, yprime_aem, delta_aem
+
+    yprime_aem = 0
+    print *, ('This program numerically evaluates the derivative of the function x^2')
+    print *, (' ')
+    print *, ('Please give the value of x:')
+    
+    read *, x_aem
+
+    print *, (' ')
+    print *, ('Please give the value of delta_aem:')
+    
+    read *, delta_aem
+
+!  Using Forward Finite Difference    
+    yprime_aem = ((x_aem+delta_aem)**2-(x_aem)**2)/(delta_aem)
+
+    print *, (' ')
+!
+    print *, (' ')
+!
+    print *, (' ')
+!            
+            
+    print *, ('FORWARD FINITE DIFFERENCE')
+    print *, yprime_aem
+
+
+!
+print *, (' ')
+!
+print *, (' ')
+!
+print *, (' ')
+!
+
+
+    yprime_aem = 0
+
+
+    !  Using Backward Finite Difference    
+    yprime_aem = ((x_aem)**2-(x_aem-delta_aem)**2)/(delta_aem)
+
+    print *, ('BACKWARD FINITE DIFFERENCE')
+    print *, yprime_aem
+
+
+!
+print *, (' ')
+!
+print *, (' ')
+!
+print *, (' ')
+!
+
+
+    yprime_aem = 0
+
+
+!  Using Forward Finite Difference    
+    yprime_aem = ((x_aem+delta_aem)**2-(x_aem-delta_aem)**2)/(2*delta_aem)
+
+    print *, ('CENTRAL FINITE DIFFERENCE')
+    print *, yprime_aem
+!
+    print *, (' ')
+    print *, (' ')
+    print *, (' ')
+    
+    print *, ('END OF PROGRAM')
+    
+    print *, (' ')    
+    
+
+end program
