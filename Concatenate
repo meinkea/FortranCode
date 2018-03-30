@@ -1,0 +1,19 @@
+! this programs is a test on the addition of strings
+program Strings
+    Character (Len=5) :: str1, str2, strSUM*10
+    print *, 'Please enter two 5 character strings'
+    read(*,'(A)') str1
+    read(*,'(A)') str2
+    strSUM = str1 // str2  ! // is to concatenate two strings
+    print *, 'The concatenation of ', str1, ' & ', str2, ' is:'
+    print *, strSUM
+end program Strings
+!
+! Putting a space in the string causes the concatenation ' // '
+!   to become VERY unstable, coming up with rearanged letters
+!
+! Leaving out entries in the string causes the concatenation ' // '
+!   to become VERY unstable, coming up with rearanged letters. I'm
+!   thinking that this is a problem with my compiler, and not the
+!   code itself.
+!
